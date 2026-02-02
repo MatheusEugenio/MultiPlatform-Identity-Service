@@ -95,6 +95,10 @@ public class Usuario {
             validarDadosDoPerfil();
             return new Usuario(this);
         }
+
+        public String getEmail() {return email;}
+        public String getSenha() {return senha;}
+        public String getNumeroTelefone() {return numeroTelefone;}
     }
 
 
