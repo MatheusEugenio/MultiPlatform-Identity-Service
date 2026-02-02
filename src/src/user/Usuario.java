@@ -14,6 +14,7 @@ public class Usuario {
     //atributos opcionais
     protected String email;
     protected String senha;
+    protected String numeroTelefone;
 
     public Usuario(Builder builder) {
         this.nome = builder.nome;
@@ -22,7 +23,16 @@ public class Usuario {
         this.tipoDeUsuario= builder.tipoDeUsuario;
         this.email = builder.email;
         this.senha = builder.senha;
+        this.numeroTelefone = builder.numeroTelefone;
     }
+
+    public String getNome() {return nome;}
+    public int getIdade() {return idade;}
+    public Genero getSexo() {return sexo;}
+    public TipoDeUsuario getTipoDeUsuario() {return tipoDeUsuario;}
+    public String getEmail() {return email;}
+    public String getSenha() {return senha;}
+    public String getNumeroTelefone() {return numeroTelefone;}
 
     public static abstract class Builder{
 
@@ -35,6 +45,7 @@ public class Usuario {
         //atributos opcionais
         private String email;
         private String senha;
+        private String numeroTelefone;
 
         public Builder nome(String nome){
             this.nome = nome;
@@ -66,6 +77,11 @@ public class Usuario {
             return this;
         }
 
+        public Builder numeroTelefone(String numeroTelefone){
+            this.numeroTelefone = numeroTelefone;
+            return this;
+        }
+
         private void validacaoDosAtributos(){
             if (this.nome == null || this.idade <= 0 || this.sexo == null || this.tipoDeUsuario.equals(TipoDeUsuario.DEFAULT)){
                 throw new IllegalStateException("Impossível cadastrar usuário, algum critério é inválido ou vazio!!");
@@ -76,6 +92,7 @@ public class Usuario {
 
         public Usuario build(){
             validacaoDosAtributos();
+            validarDadosDoPerfil();
             return new Usuario(this);
         }
     }
