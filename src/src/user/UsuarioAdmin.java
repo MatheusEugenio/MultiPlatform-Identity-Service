@@ -2,7 +2,7 @@ package user;
 
 public class UsuarioAdmin extends Usuario.Builder{
     @Override
-    public void validarDadosDoPerfil() {
+    public void validarDadosDosDadosOpcionais() {
         if (!getEmail().endsWith("@corpora.com")){
             throw new IllegalStateException("Erro: o email "+getEmail()+" não é corporativo!");
         }

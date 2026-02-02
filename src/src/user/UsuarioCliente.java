@@ -2,7 +2,7 @@ package user;
 
 public class UsuarioCliente extends Usuario.Builder{
     @Override
-    public void validarDadosDoPerfil() {
+    public void validarDadosDosDadosOpcionais() {
         if (!getEmail().endsWith("@cliente.com")){
             throw new IllegalStateException("Erro: o email "+getEmail()+" não é de cliente!");
         }

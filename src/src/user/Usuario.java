@@ -82,17 +82,17 @@ public class Usuario {
             return this;
         }
 
-        private void validacaoDosAtributos(){
+        private void validacaoDosDadosObrigatorios(){
             if (this.nome == null || this.idade <= 0 || this.sexo == null || this.tipoDeUsuario.equals(TipoDeUsuario.DEFAULT)){
                 throw new IllegalStateException("Impossível cadastrar usuário, algum critério é inválido ou vazio!!");
             }
         }
 
-        public abstract void validarDadosDoPerfil();
+        public abstract void validarDadosDosDadosOpcionais();
 
         public Usuario build(){
-            validacaoDosAtributos();
-            validarDadosDoPerfil();
+            validacaoDosDadosObrigatorios();
+            validarDadosDosDadosOpcionais();
             return new Usuario(this);
         }
 
