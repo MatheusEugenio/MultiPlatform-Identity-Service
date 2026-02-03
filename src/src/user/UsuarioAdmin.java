@@ -1,6 +1,12 @@
 package user;
+import user.constante.TipoDeUsuario;
 
 public class UsuarioAdmin extends Usuario.Builder{
+
+    public UsuarioAdmin(){
+        this.tipoDeUsuario = TipoDeUsuario.ADMIN;
+    }
+
     @Override
     public void validarDadosDosDadosOpcionais() {
         if (!getEmail().endsWith("@corpora.com")){
@@ -15,4 +21,5 @@ public class UsuarioAdmin extends Usuario.Builder{
             throw new IllegalStateException("Erro: o telefone é nulo!");
         }
     }
+
 }

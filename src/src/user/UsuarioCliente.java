@@ -1,6 +1,12 @@
 package user;
+import user.constante.TipoDeUsuario;
 
 public class UsuarioCliente extends Usuario.Builder{
+
+    public UsuarioCliente(){
+        this.tipoDeUsuario = TipoDeUsuario.CLIENTE;
+    }
+
     @Override
     public void validarDadosDosDadosOpcionais() {
         if (!getEmail().endsWith("@cliente.com")){

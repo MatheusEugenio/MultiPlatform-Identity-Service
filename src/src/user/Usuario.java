@@ -1,26 +1,25 @@
 package user;
-
 import user.constante.Genero;
 import user.constante.TipoDeUsuario;
 
 public class Usuario {
 
     //atributos obrigatorios
-    protected String nome;
-    protected int idade;
-    protected Genero sexo;
-    protected TipoDeUsuario tipoDeUsuario;
+    private String nome;
+    private int idade;
+    private Genero sexo;
+    private TipoDeUsuario tipoDeUsuario;
 
     //atributos opcionais
-    protected String email;
-    protected String senha;
-    protected String numeroTelefone;
+    private String email;
+    private String senha;
+    private String numeroTelefone;
 
     public Usuario(Builder builder) {
         this.nome = builder.nome;
         this.idade = builder.idade;
         this.sexo = builder.sexo;
-        this.tipoDeUsuario= builder.tipoDeUsuario;
+        this.tipoDeUsuario = builder.tipoDeUsuario;
         this.email = builder.email;
         this.senha = builder.senha;
         this.numeroTelefone = builder.numeroTelefone;
@@ -37,15 +36,15 @@ public class Usuario {
     public static abstract class Builder{
 
         //atributos obrigatorios
-        private String nome;
-        private int idade;
-        private Genero sexo;
-        private TipoDeUsuario tipoDeUsuario;
+        protected String nome;
+        protected int idade;
+        protected Genero sexo;
+        protected TipoDeUsuario tipoDeUsuario;
 
         //atributos opcionais
-        private String email;
-        private String senha;
-        private String numeroTelefone;
+        protected String email;
+        protected String senha;
+        protected String numeroTelefone;
 
         public Builder nome(String nome){
             this.nome = nome;
@@ -82,13 +81,13 @@ public class Usuario {
             return this;
         }
 
-        private void validacaoDosDadosObrigatorios(){
+        protected void validacaoDosDadosObrigatorios(){
             if (this.nome == null || this.idade <= 0 || this.sexo == null || this.tipoDeUsuario.equals(TipoDeUsuario.DEFAULT)){
                 throw new IllegalStateException("Impossível cadastrar usuário, algum critério é inválido ou vazio!!");
             }
         }
 
-        public abstract void validarDadosDosDadosOpcionais();
+        protected abstract void validarDadosDosDadosOpcionais();
 
         public Usuario build(){
             validacaoDosDadosObrigatorios();
@@ -100,7 +99,5 @@ public class Usuario {
         public String getSenha() {return senha;}
         public String getNumeroTelefone() {return numeroTelefone;}
     }
-
-
 
 }
