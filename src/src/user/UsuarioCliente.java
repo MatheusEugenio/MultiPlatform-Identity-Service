@@ -1,24 +1,23 @@
 package user;
-import user.constante.TipoDeUsuario;
 
-public class UsuarioCliente extends Usuario.Builder{
+public class UsuarioCliente extends Usuario{
 
-    public UsuarioCliente(){
-        this.tipoDeUsuario = TipoDeUsuario.CLIENTE;
+    private UsuarioCliente(Builder builderc) {
+        super(builderc);
     }
 
-    @Override
-    public void validarDadosDosDadosOpcionais() {
-        if (!getEmail().endsWith("@cliente.com")){
-            throw new IllegalStateException("Erro: o email "+getEmail()+" não é de cliente!");
+    public static class Builder extends Usuario.Builder<Builder>{
+
+        @Override
+        protected Builder self() {
+            return this;
         }
 
-        if (getSenha() == null){
-            throw new IllegalStateException("Erro: senha inválida!");
-        }
-
-        if(getNumeroTelefone() == null || getNumeroTelefone().isEmpty()){
-            throw new IllegalStateException("Erro: o telefone é nulo!");
+        @Override
+        public UsuarioCliente build() {
+            validarObrigatorios();
+            return new UsuarioCliente(this);
         }
     }
+
 }

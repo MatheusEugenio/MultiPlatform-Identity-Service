@@ -1,6 +1,12 @@
 package user;
 
 public abstract class UsuarioFactory {
-    public abstract Usuario criar();
 
+    public static Usuario criarAdmin(UsuarioAdmin.Builder builder) {
+        return builder.build();
+    }
+
+    public static Usuario criarCliente(UsuarioCliente.Builder builder) {
+        return builder.build();
+    }
 }

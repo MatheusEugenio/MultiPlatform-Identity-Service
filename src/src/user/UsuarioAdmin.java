@@ -1,24 +1,22 @@
 package user;
-import user.constante.TipoDeUsuario;
 
-public class UsuarioAdmin extends Usuario.Builder{
+public class UsuarioAdmin extends Usuario{
 
-    public UsuarioAdmin(){
-        this.tipoDeUsuario = TipoDeUsuario.ADMIN;
+    private UsuarioAdmin(Builder builder) {
+        super(builder);
     }
 
-    @Override
-    public void validarDadosDosDadosOpcionais() {
-        if (!getEmail().endsWith("@corpora.com")){
-            throw new IllegalStateException("Erro: o email "+getEmail()+" não é corporativo!");
+    public static class Builder extends Usuario.Builder<Builder> {
+
+        @Override
+        protected Builder self() {
+            return this;
         }
 
-        if (getSenha() == null){
-            throw new IllegalStateException("Erro: senha inválida!");
-        }
-
-        if(getNumeroTelefone() == null || getNumeroTelefone().isEmpty()){
-            throw new IllegalStateException("Erro: o telefone é nulo!");
+        @Override
+        public UsuarioAdmin build() {
+            validarObrigatorios();
+            return new UsuarioAdmin(this);
         }
     }
 
