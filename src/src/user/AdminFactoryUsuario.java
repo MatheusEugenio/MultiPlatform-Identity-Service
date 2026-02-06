@@ -3,6 +3,7 @@ package user;
 import user.constante.TipoDeUsuario;
 
 public class AdminFactoryUsuario implements FactoryUsuario {
+
     @Override
     public TipoDeUsuario getTipe() {
         return TipoDeUsuario.ADMIN;

@@ -20,4 +20,5 @@ public class AppConfig {
     public String getTipoPlataforma() {
         return tipoPlataforma;
     }
+
 }
