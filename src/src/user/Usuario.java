@@ -78,6 +78,16 @@ public abstract class Usuario {
             return self();
         }
 
+        public T numeroDeTelefone(String number){
+            this.numeroTelefone = number;
+            return self();
+        }
+
+        public T senha(String senha) {
+            this.senha = senha;
+            return self();
+        }
+
         protected void validarObrigatorios() {
             if (nome == null || idade <= 0 || sexo == null) {
                 throw new IllegalStateException("Dados obrigatórios inválidos");
